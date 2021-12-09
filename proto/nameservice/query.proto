@@ -1,0 +1,44 @@
+syntax = "proto3";
+package cosmonaut.nameservice.nameservice;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "nameservice/whois.proto";
+// this line is used by starport scaffolding # 1
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/cosmonaut/nameservice/x/nameservice/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // Queries a whois by id.
+	rpc Whois(QueryGetWhoisRequest) returns (QueryGetWhoisResponse) {
+		option (google.api.http).get = "/cosmonaut/nameservice/nameservice/whois/{id}";
+	}
+
+	// Queries a list of whois items.
+	rpc WhoisAll(QueryAllWhoisRequest) returns (QueryAllWhoisResponse) {
+		option (google.api.http).get = "/cosmonaut/nameservice/nameservice/whois";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+message QueryGetWhoisRequest {
+	uint64 id = 1;
+}
+
+message QueryGetWhoisResponse {
+	Whois Whois = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllWhoisRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllWhoisResponse {
+	repeated Whois Whois = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

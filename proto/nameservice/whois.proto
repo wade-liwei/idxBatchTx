@@ -1,0 +1,13 @@
+syntax = "proto3";
+package cosmonaut.nameservice.nameservice;
+
+option go_package = "github.com/cosmonaut/nameservice/x/nameservice/types";
+
+import "gogoproto/gogo.proto";
+
+
+message Whois {
+  uint64 id = 1;
+  string md5 = 2; 
+  
+}
