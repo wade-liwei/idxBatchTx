@@ -109,23 +109,23 @@ done
 os=`uname -a`
 mac='Darwin'
 
-for i in $(seq 1 $N)
-do
-  dest=$DEST/node$i
-  if [[ $os =~ $mac ]];then
-        gsed -i '174,174d' $dest/config/config.toml
-        gsed -i "174a persistent_peers = \"$peers\"" $dest/config/config.toml
-        gsed -i 's/addr_book_strict = true/addr_book_strict = false/g' $dest/config/config.toml
-        #gsed -i 's/fast_sync = true/fast_sync = false/g' $dest/config/config.toml
-        gsed -i 's/"max_validators": 100,/"max_validators": 100,/g' $dest/config/genesis.json
-    else
-      sed -i '174,174d' $dest/config/config.toml
-      sed -i "174a persistent_peers = \"$peers\"" $dest/config/config.toml
-      sed -i 's/addr_book_strict = true/addr_book_strict = false/g' $dest/config/config.toml
+#for i in $(seq 1 $N)
+#do
+#  dest=$DEST/node$i
+#  if [[ $os =~ $mac ]];then
+#        gsed -i '174,174d' $dest/config/config.toml
+#        gsed -i "174a persistent_peers = \"$peers\"" $dest/config/config.toml
+#        gsed -i 's/addr_book_strict = true/addr_book_strict = false/g' $dest/config/config.toml
+#        #gsed -i 's/fast_sync = true/fast_sync = false/g' $dest/config/config.toml
+#        gsed -i 's/"max_validators": 100,/"max_validators": 100,/g' $dest/config/genesis.json
+#    else
+#      sed -i '174,174d' $dest/config/config.toml
+#      sed -i "174a persistent_peers = \"$peers\"" $dest/config/config.toml
+#      sed -i 's/addr_book_strict = true/addr_book_strict = false/g' $dest/config/config.toml
       #sed -i 's/fast_sync = true/fast_sync = false/g' $dest/config/config.toml
-      sed -i 's/"max_validators": 100,/"max_validators": 100,/g' $dest/config/genesis.json
-  fi
-done
+#      sed -i 's/"max_validators": 100,/"max_validators": 100,/g' $dest/config/genesis.json
+#  fi
+#done
 
 
 

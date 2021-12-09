@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1-experimental
 
-#FROM golang:alpine AS base
-FROM golang:1.15.2-alpine AS base
+FROM golang:alpine AS base
+#FROM golang:1.15.2-alpine AS base
 WORKDIR /go/src/github.com/wade-liwei/idxBatchTx
 ENV CGO_ENABLED=0
 
@@ -12,7 +12,7 @@ RUN apk add --update $PACKAGES
 # Add source files
 COPY ./ ./
 RUN --mount=type=cache,target=/go/pkg/mod \
-   mod download
+ go  mod download
 
 
 FROM base AS build

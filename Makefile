@@ -19,8 +19,8 @@ upjoin: up joinup
 build:
 	mkdir -p $(BUILDDIR) 
 	go build    -o $(BUILDDIR)/nameserviced  ./cmd/nameserviced/
-	go install ./cmd/nameserviced/
-	docker build . -t  nameserviced
+	go install ./cmd/nameserviced/ 
+	sudo   DOCKER_BUILDKIT=1   docker build . -t  nameserviced
 
 build-docker-ouput: go.sum  # build 的目录在docker image 里不能上下复制，不清楚原因；
 	mkdir -p $(DOCKER_BUILDDIR)

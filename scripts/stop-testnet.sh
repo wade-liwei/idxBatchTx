@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker ps  -f name=node  -aq | xargs docker rm -f
-docker network rm nameservicenet
+sudo  docker ps  -f name=node  -aq | xargs sudo  docker rm -f
+sudo  docker network rm nameservicenet

@@ -18,7 +18,7 @@ if ${Join} ; then
     do
       idx=$(((($i-1))*10))
       echo $idx
-      docker run -d --name=node$i --net=nameservicenet -e "ID=$i"  --ip=172.77.5.$i  -p $((26656+$idx)):26656 -p $((26657+$idx)):26657  -p $((1317+$idx)):1317 -p $((8545+$idx)):8545  -p $((8546+$idx)):8546   -v $MPWD/conf:/nameserviced   -it nameserviced/node:latest  #/usr/bin/start.sh
+      sudo   docker run -d --name=node$i --net=nameservicenet -e "ID=$i"  --ip=172.77.5.$i  -p $((26656+$idx)):26656 -p $((26657+$idx)):26657  -p $((1317+$idx)):1317 -p $((8545+$idx)):8545  -p $((8546+$idx)):8546   -v $MPWD/conf:/nameserviced   -it nameserviced/node:latest  #/usr/bin/start.sh
 
     done
 
@@ -50,8 +50,8 @@ fi
 
 
 
-docker network prune -f
-docker network create \
+sudo docker network prune -f
+sudo docker network create \
   --driver=bridge \
   --subnet=172.77.0.0/16 \
   --ip-range=172.77.0.0/16 \
@@ -62,5 +62,5 @@ for i in $(seq 1 $N)
 do
   idx=$(((($i-1))*10))
   echo $idx
-  docker run -d --name=node$i --net=nameservicenet -e "ID=$i"  --ip=172.77.5.$i  -p $((26656+$idx)):26656 -p $((26657+$idx)):26657  -p $((1317+$idx)):1317 -p $((8545+$idx)):8545  -p $((8546+$idx)):8546   -v $MPWD/conf:/nameserviced   -it nameserviced:latest  #/usr/bin/start.sh
+  sudo  docker run -d --name=node$i --net=nameservicenet -e "ID=$i"  --ip=172.77.5.$i  -p $((26656+$idx)):26656 -p $((26657+$idx)):26657  -p $((1317+$idx)):1317 -p $((8545+$idx)):8545  -p $((8546+$idx)):8546   -v $MPWD/conf:/nameserviced   -it nameserviced:latest  #/usr/bin/start.sh
 done
