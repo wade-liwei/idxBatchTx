@@ -13,12 +13,12 @@ func (k msgServer) BuyName(goCtx context.Context, msg *types.MsgBuyName) (*types
 	// TODO: Handling the message
 	_ = ctx
 
-	for idx, v := range msg.Md5 {
-		k.SetWhois(ctx, types.Whois{
-			Id:  msg.Index + uint64(idx),
-			Md5: v,
-		})
-	}
+	// for idx, v := range msg.Md5 {
+	// 	k.SetWhois(ctx, types.Whois{
+	// 		Id:  msg.Index + uint64(idx),
+	// 		Md5: v,
+	// 	})
+	// }
 
 	return &types.MsgBuyNameResponse{}, nil
 }
