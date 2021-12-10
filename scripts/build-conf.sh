@@ -38,12 +38,18 @@ do
     fi
 done
 
+
+nameserviced keys add  alice
+
 # add genesis accounts to genesis.json
 for i in $(seq 1 $N)
 do
 
   dest=$DEST/node$i
   if [ $i -eq 1 ] ; then
+
+    nameserviced add-genesis-account $(nameserviced keys show alice -a) 100000000000000000000000000token,1000000000000000000stake --home $dest
+
     for k in $(seq 1 $(($N+20)))
     do
       if [ $k -gt $N ] ; then
